@@ -38798,7 +38798,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12 m-4" }, [
-        _c("h1", [_vm._v("This is the Time component")])
+        _c("h1", [_vm._v("This is the Time component asdas")])
       ])
     ])
   }
