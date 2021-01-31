@@ -1,65 +1,33 @@
-import AllHolidays from './components/AllHolidays.vue';
-import AddHoliday from './components/AddHoliday.vue';
-import EditHoliday from './components/EditHoliday.vue';
-import Dashboard from './components/Dashboard.vue';
-import Register from './components/Register.vue';
-import Login from './components/Login.vue';
-
-import Time from './components/Time.vue';
-import Project from './components/Project.vue';
-import Client from './components/Client.vue';
-import Team from './components/Team.vue';
-
+import AllTimesheets from './timesheets/AllTimesheets.vue';
+import AddTimesheets from './timesheets/AddTimesheets.vue';
+import EditTimesheets from './timesheets/EditTimesheets.vue';
+import IndexTimesheets from './timesheets/indexTimesheets.vue';
+import IndexProjects from './projects/indexProjects.vue';
 
 export const routes = [
     {
         name: 'home',
         path: '/',
-        component: AllHolidays
+        component: IndexTimesheets
+    },
+    {
+        name: 'projects',
+        path: '/projects',
+        component: IndexProjects
     },
     {
         name: 'add',
         path: '/add',
-        component: AddHoliday
+        component: AddTimesheets
     },
     {
         name: 'edit',
         path: '/edit/:id',
-        component: EditHoliday
+        component: EditTimesheets
     },
     {
-        path: '/register',
-        name: 'register',
-        component: Register
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login
-    },
-    {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: Dashboard
-    },
-    {
-        path: '/time',
-        name: 'time',
-        component: Time
-    },
-    {
-        path: '/project',
-        name: 'project',
-        component: Project
-    },
-    {
-        path: '/client',
-        name: 'client',
-        component: Client
-    },
-    {
-        path: '/team',
-        name: 'team',
-        component: Team
+        name: 'timesheet',
+        path: '/timesheet',
+        component: IndexTimesheets
     }
 ];

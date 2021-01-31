@@ -18,10 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('holidays', 'HolidayController@index');
-Route::group(['prefix' => 'holiday'], function () {
-    Route::post('add', 'HolidayController@add');
-    Route::get('edit/{id}', 'HolidayController@edit');
-    Route::post('update/{id}', 'HolidayController@update');
-    Route::delete('delete/{id}', 'HolidayController@delete');
+Route::get('timesheets', 'TimesheetController@index');
+Route::group(['prefix' => 'timesheet'], function () {
+    Route::post('add', 'TimesheetController@add');
+    Route::get('edit/{id}', 'TimesheetController@edit');
+    Route::post('update/{id}', 'TimesheetController@update');
+    Route::delete('delete/{id}', 'TimesheetController@delete');
 });

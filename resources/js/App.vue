@@ -8,8 +8,8 @@
             <img src="img/logo.png" class="rounded-circle mt-1" width="75">Lanex HRIS
         </div>
         <div class="list-group list-group-flush">
-            <router-link to="/time" class="list-group-item list-group-item-action bg-light">Time</router-link>
-            <router-link to="/project" class="list-group-item list-group-item-action bg-light">Projects</router-link>
+            <router-link to="/" class="list-group-item list-group-item-action bg-light">Time</router-link>
+            <router-link to="/projects" class="list-group-item list-group-item-action bg-light">Projects</router-link>
             <router-link to="/client" class="list-group-item list-group-item-action bg-light">Clients</router-link>
             <router-link to="/team" class="list-group-item list-group-item-action bg-light">Teams</router-link>
         </div>
