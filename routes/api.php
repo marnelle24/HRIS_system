@@ -25,3 +25,10 @@ Route::group(['prefix' => 'timesheet'], function () {
     Route::post('update/{id}', 'TimesheetController@update');
     Route::delete('delete/{id}', 'TimesheetController@delete');
 });
+Route::get('user', 'UsersController@index');
+Route::group(['prefix' => 'users'], function () {
+    Route::post('add', 'UsersController@add');
+    Route::get('edit/{id}', 'UsersController@edit');
+    Route::post('update/{id}', 'UsersController@update');
+    Route::delete('delete/{id}', 'UsersController@delete');
+});

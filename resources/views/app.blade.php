@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" value="{{ csrf_token() }}"/>
-    <title>Laravel & Vue CRUD Single Page Application (SPA) Tutorial - MyNotePaper</title>
+    <title>Laravel & Vue Single Page Application (SPA)</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
     <link href="css/style.css" type="text/css" rel="stylesheet"/>
     <style>
-        .bg-light {
-            background-color: #eae9e9 !important;
+        /*.bg-light {*/
+        /*    background-color: #eae9e9 !important;*/
+        /*}*/
+        .light:focus, button.bg-light:hover, button.bg-light:focus {
+            background-color: #1890ff !important;
         }
     </style>
 </head>

@@ -48,3 +48,20 @@
     margin-left: -15rem;
   }
 }
+
+div#sidebar-wrapper {
+    background: #001529 !important;
+    color: white !important;
+}
+.bg-light {
+  background: #001529 !important;
+  color: white !important;
+}
+
+.light:focus, button.bg-light:hover, button.bg-light:focus {
+  background-color: #1890ff !important;
+}
+
+.nav-link {
+  color: white !important;
+}
