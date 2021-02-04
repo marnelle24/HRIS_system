@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,9 @@ Route::group(['prefix' => 'timesheet'], function () {
     Route::post('update/{id}', 'TimesheetController@update');
     Route::delete('delete/{id}', 'TimesheetController@delete');
 });
-Route::get('user', 'UsersController@index');
-Route::group(['prefix' => 'users'], function () {
-    Route::post('add', 'UsersController@add');
-    Route::get('edit/{id}', 'UsersController@edit');
-    Route::post('update/{id}', 'UsersController@update');
-    Route::delete('delete/{id}', 'UsersController@delete');
+Route::group(['prefix' => 'users-information'], function () {
+    Route::post('add', [UsersInformationController::class,'add']);
+    Route::get('edit/{id}',[UsersInformationController::class,'edit']);
+    Route::post('update/{id}',[UsersInformationController::class,'update']);
+    Route::delete('delete/{id}',[UsersInformationController::class,'delete']);
 });

@@ -5,18 +5,40 @@
       <div>
         <b-table striped hover :items="items"></b-table>
       </div>
-      <b-modal id="modal-1" title="BootstrapVue">
-        <p class="my-4">Create User</p>
-        <form @submit.prevent="addBook">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control">
+        <b-modal id="modal-1" hide-footer>
+    <template #modal-title>
+        <h3>Create User</h3>
+        </template>
+        <form @submit.prevent="addUser">
+
+        <div class="form-group">
+        <label>Firstname</label>
+            <input type="text" class="form-control" v-model="userinfo.fname">
+        </div>
+        <div class="form-group">
+            <label>Middlename</label>
+            <input type="text" class="form-control"  v-model="userinfo.mname">
+        </div>
+        <div class="form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control" v-model="userinfo.lname">
+        </div>
+        <div class="form-group">
+
+          <div>
+            <label>Birthdate</label>
+            <b-form-datepicker id="example-datepicker"  v-model="userinfo.birthdate" class="mb-2"></b-form-datepicker>
           </div>
-          <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" >
-          </div>
-          <button type="submit" class="btn btn-primary">Add User</button>
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <input type="text" class="form-control"  v-model="userinfo.gender">
+        </div>
+        <div class="ml-auto">
+            <button class="btn btn-primary mt-3 float-right" block @click="$bvModal.hide('modal-1')">Close Me</button>
+            &nbsp;
+            <button type="submit" class="btn btn-primary mt-3 float-right">Ok</button>
+        </div>
         </form>
       </b-modal>
     </div>
@@ -31,7 +53,9 @@ export default {
           { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
           { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
           { age: 38, first_name: 'Jami', last_name: 'Carney' }
-        ]
+        ],
+        value: '',
+        userinfo: {}
     }
   },
   created() {
@@ -45,16 +69,15 @@ export default {
   },
   methods: {
 
-    addBook() {
-        console.log('here   ');
-      // this.axios
-      //     .post('http://localhost:7080/api/timesheet/add', this.book)
-      //     .then(response => (
-      //         this.$router.push({name: 'home'})
-      //         // console.log(response.data)
-      //     ))
-      //     .catch(error => console.log(error))
-      //     .finally(() => this.loading = false)
+    addUser() {
+      this.axios
+          .post('http://localhost:7080/api/users-information/add', this.userinfo)
+          .then(response => (
+              //this.$router.push({name: 'home'})
+              console.log(response)
+          ))
+          .catch(error => console.log(error))
+          .finally(() => this.loading = false)
     },
     deleteTimesheet(id) {
       this.axios
