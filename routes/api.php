@@ -28,6 +28,7 @@ Route::group(['prefix' => 'timesheet'], function () {
 });
 Route::group(['prefix' => 'users-information'], function () {
     Route::post('add', [UsersInformationController::class,'add']);
+    Route::get('list', [UsersInformationController::class,'list']);
     Route::get('edit/{id}',[UsersInformationController::class,'edit']);
     Route::post('update/{id}',[UsersInformationController::class,'update']);
     Route::delete('delete/{id}',[UsersInformationController::class,'delete']);

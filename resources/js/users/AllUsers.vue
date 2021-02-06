@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="text-center">All Users</h3><br/>
-
+     <b-alert variant="success" show>Success Alert</b-alert>
     <table class="table table-bordered">
       <thead>
       <tr>
@@ -37,7 +37,7 @@
 export default {
   data() {
     return {
-      timesheets: []
+      timesheets: [],
     }
   },
   created() {

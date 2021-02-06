@@ -26,8 +26,11 @@
     "dependencies": {
         "bootstrap": "^4.0.0-alpha.6",
         "bootstrap-vue": "^2.21.2",
+        "vee-validate": "^3.4.5",
         "vue": "^2.6.12",
         "vue-axios": "^3.2.4",
-        "vue-router": "^3.5.1"
+        "vue-router": "^3.5.1",
+        "vue-tables-2": "^2.1.80",
+        "vuejs-smart-table": "^0.0.7"
     }
 }

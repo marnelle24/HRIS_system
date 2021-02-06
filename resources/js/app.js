@@ -39,8 +39,29 @@ import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import {routes} from './routes';
-
+import SmartTable from 'vuejs-smart-table'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+import {
+  ValidationObserver,
+  ValidationProvider,
+  extend,
+  localize
+} from "vee-validate";
+import en from "vee-validate/dist/locale/en.json";
+import * as rules from "vee-validate/dist/rules";
+
+// Install VeeValidate rules and localization
+Object.keys(rules).forEach(rule => {
+  extend(rule, rules[rule]);
+});
+
+localize("en", en);
+
+// Install VeeValidate components globally
+Vue.component("ValidationObserver", ValidationObserver);
+Vue.component("ValidationProvider", ValidationProvider);
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -50,7 +71,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-
+Vue.use(SmartTable)
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 axios.defaults.baseURL = 'http://localhost:7080/api';
