@@ -1,25 +1,17 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" value="{{ csrf_token() }}"/>
-    <title>Laravel & Vue Single Page Application (SPA)</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+    <title>Lanex HRIS System</title>
     <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet"/>
-    <style>
-        /*.bg-light {*/
-        /*    background-color: #eae9e9 !important;*/
-        /*}*/
-        .light:focus, button.bg-light:hover, button.bg-light:focus {
-            background-color: #1890ff !important;
-        }
     </style>
 </head>
-<body>
-<div id="app">
-</div>
-<script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper" id="app"></div>
+    <!-- We have to include public/js/app.js. Add the following code before end of body tag -->
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
