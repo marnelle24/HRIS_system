@@ -5,7 +5,10 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                <a class="nav-link pl-0" data-widget="pushmenu" href="#" @click="arrow =!arrow">
+                    <i v-if="arrow" class="fas fa-arrow-left"></i>
+                    <i v-else class="fas fa-arrow-right"></i>
+                </a>
             </li>
         </ul>
         <!-- Right navbar links -->
@@ -30,24 +33,16 @@
         <!-- Brand Logo -->
         <a href="#" class="brand-link">
             <img src="img/logo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Lanix HRIS</span>
+            <span class="brand-text font-weight-light">Lanix HRIS </span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item has-treeview menu-open">
-                        <router-link to="/" class="nav-link active"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/timesheet" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Timesheet</p></router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/users" class="nav-link"><i class="nav-icon fas fa-users"></i><p>Users</p></router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/projects" class="nav-link"><i class="nav-icon fas fa-thumbs-up"></i><p>Projects</p></router-link>
+                    <li class="nav-item has-treeview menu-open" v-for="nav in navs" :key="nav.id">
+                        <router-link :to="{path:nav.path}" active-class="active"
+          exact class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>{{nav.component}}</p></router-link>
                     </li>
 
                 </ul>
@@ -62,16 +57,34 @@
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-    <strong>Copyright &copy; 2021-2022 <a href="#">Lanex HRIS System</a></strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
-    </div>
+        <strong>Copyright &copy; 2021-2022 <a href="#">Lanex HRIS System</a></strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+          <b>Version</b> 1.0.0
+        </div>
     </footer>
     </div>
 
 </template>
 
 <script>
-    export default {}
+    export default {
+        data() {
+            return { 
+                navs: [],
+                arrow: true
+            }
+        },
+        created() {
+            this.nav();
+        },
+        methods:{
+            nav(){
+                this.axios.get(axios.defaults.baseURL+'/nav-list/list')
+                .then(response => {
+                    this.navs = response.data;
+                });
+            }
+        }
+    }
 </script>

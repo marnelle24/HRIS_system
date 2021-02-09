@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UsersInformation;
+use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
 
 class UsersInformationController extends Controller
 {
@@ -37,13 +37,25 @@ class UsersInformationController extends Controller
      */
     public function add(Request $request)
     {
+        $user = new User([
+            'name'     => $request->input('fname').' '.$request->input('lname'),
+            'email'    => $request->input('email'),
+            'password' => bcrypt('admin123')
+        ]);
+
+        $user->save();
+        
+        if(empty($user->id)) {
+            return response()->json('The user was not successfully added');
+        }
+
         $usersinformation = new UsersInformation([
-            'user_id' => 1123,
+            'user_id' => $user->id,
             'first_name' => $request->input('fname'),
             'middle_name' => $request->input('mname'),
             'last_name' => $request->input('lname'),
             'hired_date' => date('Y-m-d'),
-            'employee_id' => 101,
+            'employee_id' => $request->input('employeeid'),
             'birth_date' => date('Y-m-d',strtotime($request->input('birthdate'))),
             'gender' => $request->input('gender'),
             'address' => 'test',
@@ -81,12 +93,11 @@ class UsersInformationController extends Controller
     public function update($id, Request $request)
     {
         $data = [
-            'user_id' => 1123,
             'first_name' => $request->input('fname'),
             'middle_name' => $request->input('mname'),
             'last_name' => $request->input('lname'),
             'hired_date' => date('Y-m-d'),
-            'employee_id' => 101,
+            'employee_id' => $request->input('employeeid'),
             'birth_date' => date('Y-m-d',strtotime($request->input('birthdate'))),
             'gender' => $request->input('gender'),
             'address' => 'test',
